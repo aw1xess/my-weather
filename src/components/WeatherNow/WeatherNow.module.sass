@@ -1,0 +1,95 @@
+$tile-background: rgba(69, 74, 82, 0.08)
+    
+.weatherNow
+    grid-area: weather-now
+    display: grid
+    grid-template-columns: 58% 42%
+    padding: 20px 0px 0px 20px
+    font-weight: 300
+
+.info
+    display: grid
+    grid-template-rows: 24% 16% 32% 11% 13%
+
+.temperature
+    font-size: 2.5em
+
+.city
+    font-size: 2.1em
+
+.time
+    font-size: 1.9em
+
+
+.date
+    align-self: end
+    font-size: 1.8em
+
+.details
+    display: grid
+    margin-bottom: 20px
+    margin-right: 20px
+
+.sunInfo
+    display: grid
+    grid-template-columns: 50% 50%
+
+.sunrise, .sunset
+    width: fit-content
+    padding: 20px 14px 34px 14px
+    border-radius: 24px
+    background-color: $tile-background
+    text-align: center
+    align-self: start
+
+.sunset
+    justify-self: end
+
+.sunriseImg, .sunsetImg
+    margin-top: 50%
+    margin-bottom: 10% 
+    width: 90px
+
+.options
+    background-color: $tile-background
+    padding: 20px 14px 12px 40px
+    border-radius: 24px
+    align-self: end
+    display: grid
+    grid-template-columns: 70% 30%
+
+.wind
+    position: relative
+
+.wind::before
+    background: url(../../assets/images/icons/wind.png)
+
+.humidity
+    position: relative
+
+.humidity::before
+    background: url(../../assets/images/icons/waterdrop.png)
+
+.rainChance
+    position: relative
+
+.rainChance::before
+    background: url(../../assets/images/icons/rain.png)
+
+.wind, .humidity, .rainChance
+    padding-bottom: 12px
+
+.wind::before, .humidity::before, .rainChance::before
+    content: ""
+    display: inline-block
+    background-size: contain
+    background-repeat: no-repeat
+    width: 22px
+    height: 22px
+    position: absolute
+    top: 4px
+    left: -25px
+    
+.optionsValues p
+    padding-bottom: 12px
+    text-align: end

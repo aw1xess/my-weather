@@ -1,0 +1,41 @@
+.weatherDaily
+    border-top: 1px solid #d9d9d9
+    grid-area: weather-daily
+    display: flex
+    justify-content: space-around
+    position: relative
+    padding: 14px 40px 14px 40px
+
+.arrowRight, .arrowLeft
+    position: absolute
+    top: 43%
+    color: #000
+    text-decoration: none
+
+.arrowRight
+    right: 2.8%
+
+.arrowLeft
+    left: 0.8%
+
+.arrowRight::before, .arrowRight::after, .arrowLeft::before, .arrowLeft::after
+    content: ""
+    width: 30px
+    height: 2px
+    background: #000
+    display: inline-block
+    position: absolute
+
+.arrowLeft::before
+    transform: rotate(-45deg)
+
+.arrowLeft::after
+    transform: rotate(45deg)
+    top: 20px
+
+.arrowRight::before
+    transform: rotate(45deg)
+
+.arrowRight::after
+    transform: rotate(-45deg)
+    top: 20px
