@@ -1,11 +1,16 @@
-@use "../WeatherNow/WeatherNow.module" as w
+@use "../../assets/styles/variables" as v
+
+.themeLight
+    background: v.$light-tile-background
+
+.themeDark
+    background: v.$dark-tile-background
     
 .weather
     display: grid
     grid-template-columns: 62% 25% 15%
-    background-color: w.$tile-background
     padding: 6px 12px 6px 12px
-    border-radius: 12px
+    border-radius: 14px
     font-weight: 300
 
 .icon

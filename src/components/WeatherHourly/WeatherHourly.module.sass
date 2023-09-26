@@ -1,7 +1,15 @@
+@use "../../assets/styles/variables" as v
+    
 .weatherHolder
     grid-area: weather-hourly
-    border-left: 1px solid #d9d9d9
     display: flex
     flex-direction: column
     justify-content: space-around
     padding: 14px
+
+.themeLight
+    @include v.border($property: border-left, $color: v.$light-border)
+
+.themeDark
+    @include v.border($property: border-left, $color: v.$dark-border)
+    

@@ -1,14 +1,33 @@
-@use "../App"
+@use "../../assets/styles/variables" as v
 $primary-color: #a6a6a6
+
+.themeLight
+    background: url(../../assets/images/icons/magnifying-glass-solid-dark.svg) no-repeat 6px
+    background-color: #eff1f3
+    @include v.border($property: border, $color: v.$light-border)
+
+    &:focus
+        outline: 1px solid $primary-color
+    
+    &::placeholder
+        color: #747474
+
+.themeDark
+    background: url(../../assets/images/icons/magnifying-glass-solid-light.svg) no-repeat 6px
+    background-color: v.$dark-tile-background
+    color: white
+    @include v.border($property: border, $color: v.$dark-border)
+    
+    &:focus
+        outline: 1px solid v.$dark-border
+    
+    &::placeholder
+        color: #cbcbcb
+        
 
 .searchbar
     width: 20vw
-    background: url(../../assets/images/icons/magnifying-glass-solid.svg) no-repeat 6px
     background-size: 18px
-    border: 1px solid $primary-color
     border-radius: 6px
     font-size: 1.3vw
     padding: 6px 0px 6px 30px
-
-.searchbar:focus
-    outline: 1px solid $primary-color

@@ -1,12 +1,19 @@
-@use "../WeatherNow/WeatherNow.module" as w
+@use "../../assets/styles/variables" as v
+
+.themeLight
+    background: v.$light-tile-background
+
+.themeDark
+    background: v.$dark-tile-background
 
 .day
-    background: w.$tile-background
-    width: 12%
+    width: 100%
     padding: 8px 0px 8px 0px
     border-radius: 24px
     font-weight: 300
     text-align: center
+    &:hover
+        cursor: pointer
 
 .icon
     width: 54px

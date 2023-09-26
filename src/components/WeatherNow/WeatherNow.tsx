@@ -5,12 +5,16 @@ import WeatherIcon from "../WeatherIcon/WeatherIcon";
 import sunrise from "../../assets/images/icons/sunrise.png";
 // @ts-ignore
 import sunset from "../../assets/images/icons/sunset.png";
+//@ts-ignore
+import classnames from "classnames";
+import { useSelector } from "react-redux";
 
 function WeatherNow() {
 	let date = new Date();
 	let day = date.getDay();
 	let month = date.getMonth();
 	let time = date.toLocaleTimeString();
+	const theme = useSelector((state: { theme: string }) => state.theme);
 
 	const days = [
 		"Sunday",
@@ -47,7 +51,12 @@ function WeatherNow() {
 	setInterval(checkTime, 1000);
 
 	return (
-		<div className={styles.weatherNow}>
+		<div
+			className={classnames(
+				styles.weatherNow,
+				theme === "dark" ? styles.themeDark : styles.themeLight
+			)}
+		>
 			<div className={styles.info}>
 				<WeatherIcon />
 				<p className={styles.temperature}>26 °C</p>

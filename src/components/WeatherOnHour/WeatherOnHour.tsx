@@ -4,6 +4,9 @@ import styles from "./WeatherOnHour.module.sass";
 import moon from "../../assets/images/icons/moon.png";
 //@ts-ignore
 import sunny_cloudy from "../../assets/images/icons/sunny_cloudy.png";
+//@ts-ignore
+import classnames from "classnames";
+import { useSelector } from "react-redux";
 
 interface Time {
 	time: string;
@@ -11,8 +14,14 @@ interface Time {
 
 function WeatherOnHour({ time }: Time) {
 	let image = "";
+	const theme = useSelector((state: { theme: string }) => state.theme);
 	return (
-		<div className={styles.weather}>
+		<div
+			className={classnames(
+				styles.weather,
+				theme === "dark" ? styles.themeDark : styles.themeLight
+			)}
+		>
 			<p>{time}</p>
 			<p>27 °C</p>
 			<img src={sunny_cloudy} alt="weatherIcon" className={styles.icon} />
