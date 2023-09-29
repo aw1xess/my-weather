@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./SwitchTheme.module.sass";
 
-import { set } from "../../redux/store";
+import { setTheme } from "../../redux/store";
 
 function SwitchTheme() {
 	const theme = useSelector((state: { theme: string }) => state.theme);
@@ -10,7 +10,7 @@ function SwitchTheme() {
 
 	const handleChange = () => {
 		const next = theme === "light" ? "dark" : "light";
-		dispatch(set(next));
+		dispatch(setTheme(next));
 		console.log("clicked");
 	};
 	return (
