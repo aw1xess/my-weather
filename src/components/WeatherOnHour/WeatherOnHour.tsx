@@ -1,20 +1,23 @@
 import React from "react";
 import styles from "./WeatherOnHour.module.sass";
-//@ts-ignore
-import moon from "../../assets/images/icons/moon.png";
-//@ts-ignore
-import sunny_cloudy from "../../assets/images/icons/sunny_cloudy.png";
+import WeatherIcon from "../WeatherIcon/WeatherIcon";
 //@ts-ignore
 import classnames from "classnames";
 import { useSelector } from "react-redux";
 
-interface Time {
+interface TimeTemperature {
 	time: string;
+	temperature: number;
+	weatherDescription: string;
 }
 
-function WeatherOnHour({ time }: Time) {
-	let image = "";
+function WeatherOnHour({
+	time,
+	temperature,
+	weatherDescription,
+}: TimeTemperature) {
 	const theme = useSelector((state: { theme: string }) => state.theme);
+	let hours = time.slice(0, 2);
 	return (
 		<div
 			className={classnames(
@@ -23,8 +26,10 @@ function WeatherOnHour({ time }: Time) {
 			)}
 		>
 			<p>{time}</p>
-			<p>27 °C</p>
-			<img src={sunny_cloudy} alt="weatherIcon" className={styles.icon} />
+			<p>{Math.round(temperature)} °C</p>
+			<div className={styles.icon}>
+				<WeatherIcon weather={weatherDescription} hours={+hours} />
+			</div>
 		</div>
 	);
 }

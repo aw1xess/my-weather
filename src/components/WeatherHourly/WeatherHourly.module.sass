@@ -2,14 +2,39 @@
     
 .weatherHolder
     grid-area: weather-hourly
-    display: flex
-    flex-direction: column
-    justify-content: space-around
     padding: 14px
+
+.weatherContainer
+    height: 470px
+    overflow-y: scroll
+    padding-right: 10px 
+
+.weatherContainer::-webkit-scrollbar
+    width: 10px
+
+/* Track */
+.weatherContainer
+    &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb
+        border-radius: v.$border-radius
+        -webkit-border-radius: v.$border-radius
+
+/* Handle */
+.weatherContainer::-webkit-scrollbar-thumb 
+    background: rgba(255, 255, 255, 0.6)
+
+.weatherContainer::-webkit-scrollbar-track 
+    background: rgba(255, 255, 255, 0.3)
+
 
 .themeLight
     @include v.border($property: border-left, $color: v.$light-border)
 
 .themeDark
     @include v.border($property: border-left, $color: v.$dark-border)
+
+    .weatherContainer::-webkit-scrollbar-thumb 
+        background: rgba(104, 109, 118, 0.9)
+
+    .weatherContainer::-webkit-scrollbar-track 
+        background: rgba(69, 74, 82, 0.4)
     

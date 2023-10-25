@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./WeatherNow.module.sass";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
-import WeatherDataService from "../../services/weatherAPI";
+import LoaderCircle from "../LoaderCircle/LoaderCircle";
 // @ts-ignore
 import sunrise from "../../assets/images/icons/sunrise.png";
 // @ts-ignore
 import sunset from "../../assets/images/icons/sunset.png";
 //@ts-ignore
 import classnames from "classnames";
-import { useSelector, useDispatch } from "react-redux";
-import { setWeather } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 function WeatherNow() {
 	let date = new Date();
 	let day = date.getDay();
 	let month = date.getMonth();
-	let time = date.toLocaleTimeString();
+	let time = convertTime(date);
+
 	const theme = useSelector((state: { theme: string }) => state.theme);
-	const dispatch = useDispatch();
-	let weather = useSelector((state: { weather: any }) => state.weather);
+	const weather = useSelector((state: { weather: any }) => state.weather);
 
 	const days = [
 		"Sunday",
@@ -45,36 +44,26 @@ function WeatherNow() {
 		"December",
 	] as const;
 
-	let [currentTime, changeTime] = useState(time);
+	const [currentTime, changeTime] = useState(time);
 
 	function checkTime() {
-		time = new Date().toLocaleTimeString();
+		let time = convertTime(new Date());
 		changeTime(time);
 	}
 
 	setInterval(checkTime, 1000);
 
-	async function getWeather(city: string) {
-		let response = await WeatherDataService.getWeatherByCity(city);
-		dispatch(setWeather(response));
-		// getCurrentWeather(response.current);
+	function convertTime(date: Date) {
+		let hours: string | number = date.getHours();
+		let minutes: string | number = date.getMinutes();
+		if (hours < 10) {
+			hours = "0" + hours;
+		}
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		}
+		return `${hours}:${minutes}`;
 	}
-
-	function checkIfLoaded() {
-		return (
-			Object.keys(weather).length === 0 && weather.constructor === Object
-		);
-	}
-
-	// let [temp, changeTemp] = useState(0);
-
-	// function getCurrentWeather(data: any) {
-	// 	changeTemp(Math.round(data.temp));
-	// }
-
-	useEffect(() => {
-		getWeather("Kyiv");
-	}, []);
 
 	return (
 		<div
@@ -84,15 +73,19 @@ function WeatherNow() {
 			)}
 		>
 			<div className={styles.info}>
-				<WeatherIcon />
+				<div className={styles.icon}>
+					<WeatherIcon
+						weather={weather.current.weather[0].description}
+						hours={date.getHours()}
+					/>
+				</div>
+
 				<p className={styles.temperature}>
-					{checkIfLoaded()
-						? "Loading"
-						: Math.round(weather.current.temp)}
+					{Math.round(weather.current.temp)}
 					°C
 				</p>
 				<p className={styles.city}>Kyiv</p>
-				<p className={styles.time}>{currentTime.slice(0, -3)}</p>
+				<p className={styles.time}>{currentTime}</p>
 				<p className={styles.date}>
 					{days[day]} {date.getDate()}, {months[month]}
 				</p>
@@ -107,11 +100,9 @@ function WeatherNow() {
 							className={styles.sunriseImg}
 						/>
 						<p className={styles.sunriseTime}>
-							{checkIfLoaded()
-								? "Loading"
-								: new Date(weather.current.sunrise * 1000)
-										.toLocaleTimeString()
-										.slice(0, -3)}
+							{convertTime(
+								new Date(weather.current.sunrise * 1000)
+							)}
 						</p>
 					</div>
 					<div className={styles.sunset}>
@@ -122,38 +113,24 @@ function WeatherNow() {
 							className={styles.sunsetImg}
 						/>
 						<p className={styles.sunsetTime}>
-							{checkIfLoaded()
-								? "Loading"
-								: new Date(weather.current.sunset * 1000)
-										.toLocaleTimeString()
-										.slice(0, -3)}
+							{convertTime(
+								new Date(weather.current.sunset * 1000)
+							)}
 						</p>
 					</div>
 				</div>
 				<div className={styles.options}>
 					<div className={styles.optionsNames}>
-						<p className={styles.wind}>Wind speed</p>
 						<p className={styles.humidity}>Humidity</p>
 						<p className={styles.clouds}>Cloudiness</p>
+						<p className={styles.wind}>Wind speed</p>
 					</div>
 					<div className={styles.optionsValues}>
+						<p>{weather.current.humidity}%</p>
+						<p>{weather.current.clouds}%</p>
 						<p>
-							{checkIfLoaded()
-								? "Loading"
-								: weather.current.wind_speed}{" "}
+							{Math.round(weather.current.wind_speed * 10) / 10}{" "}
 							m/s
-						</p>
-						<p>
-							{checkIfLoaded()
-								? "Loading"
-								: weather.current.humidity}
-							%
-						</p>
-						<p>
-							{checkIfLoaded()
-								? "Loading"
-								: weather.current.clouds}
-							%
 						</p>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-@use "../../assets/styles/variables"
+@use "../../assets/styles/variables" as v
 
 $light: #eff1f3
 $dark: #1f1f1f
@@ -17,7 +17,7 @@ $dark: #1f1f1f
     display: block
     width: 100%
     height: 30px
-    background-color: $dark
+    background: linear-gradient(45deg,#00076c, #000321)
     border-radius: 50px
     cursor: pointer
 
@@ -36,7 +36,7 @@ $dark: #1f1f1f
 
 
 .themeInput:checked ~ .slider 
-    background-color: $light
+    background: linear-gradient(45deg,#fe6ba9, #9065BC )
 
 
 .slider::before 
@@ -47,12 +47,11 @@ $dark: #1f1f1f
     width: 20px
     height: 20px
     border-radius: 50%
-    box-shadow: inset 9px 0px 0px 0px $light
-    background-color: $dark
+    box-shadow: inset 9px 0px 0px 0px #fe84b7
     transition: 0.3s
 
 
 .themeInput:checked ~ .slider::before 
     transform: translateX(28px)
-    background-color: $dark
+    background: #000761
     box-shadow: none
