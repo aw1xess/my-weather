@@ -9,9 +9,10 @@ $dark-bg: rgba(127, 127, 127, 0.1)
     align-items: center
 
 .weather
-    margin-top: 30px
+    margin-top: 3vh
     border-radius: v.$border-radius
     display: grid
+    height: 88vh
     grid-template-rows: 2fr 1fr 0.9fr
     grid-template-columns: 2fr 2fr 1.4fr
     grid-template-areas: "weather-now weather-now weather-hourly" "weather-now weather-now weather-hourly" "weather-daily weather-daily weather-daily"
@@ -23,3 +24,16 @@ $dark-bg: rgba(127, 127, 127, 0.1)
 .themeDark
     background: $dark-bg
     @include v.border($property: border, $color: v.$dark-border)
+
+@media screen and (max-height: 800px)
+    .weather
+        grid-template-rows: 2fr 1fr 1fr
+
+@media screen and (max-width: 900px)
+    .weather
+        grid-template-columns: 1fr 1fr 1fr
+        height: 89.8vh
+
+@media screen and (max-width: 640px)
+    .weather
+        grid-template-columns: 1fr 2fr 3fr

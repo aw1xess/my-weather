@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./SwitchTheme.module.sass";
 
@@ -16,7 +15,7 @@ function SwitchTheme() {
 	};
 
 	return (
-		<div className={classnames(styles.toggleSwitch)}>
+		<div className={styles.toggleSwitch}>
 			<label className={styles.themeLabel}>
 				<input
 					type="checkbox"

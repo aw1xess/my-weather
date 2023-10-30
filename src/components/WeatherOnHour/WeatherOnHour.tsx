@@ -25,8 +25,8 @@ function WeatherOnHour({
 				theme === "dark" ? styles.themeDark : styles.themeLight
 			)}
 		>
-			<p>{time}</p>
-			<p>{Math.round(temperature)} °C</p>
+			<p className={styles.time}>{time}</p>
+			<p className={styles.temp}>{Math.round(temperature)} °C</p>
 			<div className={styles.icon}>
 				<WeatherIcon weather={weatherDescription} hours={+hours} />
 			</div>

@@ -2,31 +2,47 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Nav from "./Nav/Nav";
 import Weather from "./Weather/Weather";
-//@ts-ignore
+import WeatherNowDetails from "./WeatherNow/WeatherNowDetails/WeatherNowDetails";
 import classnames from "classnames";
 import "./App.sass";
-import { setTheme } from "../redux/store";
 
 function App() {
 	const theme = useSelector((state: { theme: string }) => state.theme);
-	const dispatch = useDispatch();
+	const inputFocus = useSelector(
+		(state: { inputFocus: string }) => state.inputFocus
+	);
+	const [screenSize, setScreenSize] = useState(getCurrentDimension());
 
-	// useEffect(() => {
-	// 	const newTheme = theme === "light" ? "dark" : "light";
-	// 	localStorage.setItem("theme", newTheme);
-	// 	dispatch(setTheme(newTheme));
-	// }, [theme]);
+	function getCurrentDimension() {
+		return {
+			width: window.innerWidth,
+			height: window.innerHeight,
+		};
+	}
+
+	useEffect(() => {
+		const updateDimension = () => {
+			setScreenSize(getCurrentDimension());
+		};
+		window.addEventListener("resize", updateDimension);
+
+		return () => {
+			window.removeEventListener("resize", updateDimension);
+		};
+	}, [screenSize]);
 
 	return (
 		<div
 			className={classnames(
 				"app",
-				theme === "dark" ? "theme--dark" : "theme--light"
+				theme === "dark" ? "theme--dark" : "theme--light",
+				inputFocus ? "disabled" : ""
 			)}
 		>
 			<div className="container">
 				<Nav />
 				<Weather />
+				{screenSize.width < 640 ? <WeatherNowDetails /> : null}
 			</div>
 		</div>
 	);

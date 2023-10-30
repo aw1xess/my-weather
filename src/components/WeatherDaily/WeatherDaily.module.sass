@@ -7,67 +7,36 @@
     position: relative
     padding: 14px 0px 14px 0px
 
+
 .themeLight
     @include v.border($property: border-top, $color: v.$light-border)
 
 .themeDark
     @include v.border($property: border-top, $color: v.$dark-border)
-    
-
-.arrowRight, .arrowLeft
-    position: absolute
-    top: 43%
-    color: #000
-    text-decoration: none
-    &::before, &::after
-        content: ""
-        width: 30px
-        height: 2px
-        display: inline-block
-        position: absolute
-
-.arrowRight
-    right: 2.8%
-
-.arrowLeft
-    left: 0.8%    
-
-.themeLight
-    .arrowRight, .arrowLeft
-        &::before, &::after
-            background: #000
-
-.themeDark
-    .arrowRight, .arrowLeft
-        &::before, &::after
-            background: #fff
-
-.arrowLeft::before
-    transform: rotate(-45deg)
-
-.arrowLeft::after
-    transform: rotate(45deg)
-    top: 20px
-
-.arrowRight::before
-    transform: rotate(45deg)
-
-.arrowRight::after
-    transform: rotate(-45deg)
-    top: 20px
 
 .swiper 
     width: 92%
 
-
 .swiperPrevButton
     background: url(../../assets/images/icons/leftArrowWhite.svg) no-repeat 0px
+    
 .swiperNextButton
     background: url(../../assets/images/icons/rightArrowWhite.svg) no-repeat 0px
+    
 
 .swiperPrevButton, .swiperNextButton
-    width: 30px
+    background-size: 24px
     &::after
         display: none
 
+@media screen and (max-width: 1100px)
+    .swiperPrevButton
+        margin-left: -6px 
+    
+    .swiperNextButton
+        margin-right: -6px
+
+@media screen and (max-width: 899px)
+    .swiperPrevButton, .swiperNextButton
+        display: none
 

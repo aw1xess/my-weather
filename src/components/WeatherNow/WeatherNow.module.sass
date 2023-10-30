@@ -4,25 +4,20 @@
     grid-area: weather-now
     display: grid
     grid-template-columns: 58% 42%
-    padding: 20px 0px 0px 20px
+    padding: 20px 20px 20px 20px
     font-weight: 300
-
-.themeLight 
-    .sunrise, .sunset, .options 
-        background: v.$light-tile-background
-    
-
-.themeDark 
-    .sunrise, .sunset, .options 
-        background: v.$dark-tile-background
+    position: relative
+        
 
 .info
     display: grid
-    grid-template-rows: 24% 16% 32% 11% 13%
+    grid-template-rows: 24% 14% 42% 11% 13%
 
 .icon img
-    width: 90px
-    height: 90px
+    width: 4em
+
+.swapInfo
+    display: none
 
 .temperature
     font-size: 2.5em
@@ -35,67 +30,44 @@
 
 
 .date
-    align-self: end
+    height: fit-content
     font-size: 1.8em
 
-.details
-    display: grid
-    margin-bottom: 20px
-    margin-right: 20px
 
-.sunInfo
-    display: grid
-    grid-template-columns: 50% 50%
-
-.sunrise, .sunset
-    width: fit-content
-    padding: 20px 14px 34px 14px
-    text-align: center
-    align-self: start
-
-.sunset
-    justify-self: end
-
-.sunriseImg, .sunsetImg
-    margin-top: 50%
-    margin-bottom: 10% 
-    width: 90px
-
-.options
-    padding: 20px 14px 12px 40px
-    align-self: end
-    display: grid
-    grid-template-columns: 70% 30%
-
-.sunrise, .sunset, .options
-    border-radius: v.$border-radius
+@media screen and (max-width: 1024px)
+    .weatherNow
+        padding: 20px 10px 20px 10px
     
-
-.wind::before
-    background: url(../../assets/images/icons/wind.png)
-
-.humidity::before
-    background: url(../../assets/images/icons/waterdrop.png)
-
-.clouds::before
-    background: url(../../assets/images/icons/heavy_clouds.png)
-
-.wind, .humidity, .clouds
-    position: relative
-    padding-bottom: 12px
-
-    &::before
-        content: ""
-        display: inline-block
-        background-size: contain
-        background-repeat: no-repeat
-        width: 22px
-        height: 22px
-        position: absolute
-        top: 4px
-        left: -25px
+    .info
+        grid-template-rows: 24% 14% 42% 10% 11%
     
-.optionsValues 
-    p
-        padding-bottom: 12px
-        text-align: end
+    .temperature
+        font-size: 2.3em
+
+    .city
+        font-size: 1.9em
+
+    .time
+        font-size: 1.7em
+
+    .date
+        font-size: 1.6em
+
+@media screen and (max-width: 900px)
+    .weatherNow
+        grid-template-columns: 48% 48%
+
+    .info
+        grid-template-rows: 20% 12% 42% 10% 20%
+
+
+@media screen and (max-width: 640px)
+    .weatherNow
+        grid-template-columns: 100%
+
+    .info
+        grid-template-rows: 20% 12% 46% 10% 20%
+
+@media screen and (max-width: 370px)
+    .info
+        grid-template-rows: 20% 12% 36% 10% 20%

@@ -9,7 +9,7 @@
 .weather
     display: grid
     grid-template-columns: 42% 44% 10%
-    padding: 8px 12px 2px 12px
+    padding: 8px 20px 0px 12px
     border-radius: 14px
     font-weight: 300
     margin-bottom: 14px
@@ -17,4 +17,35 @@
 .icon
     img
         width: 30px
-        height: 30px
+
+@media screen and (max-width: 470px)
+    .weather
+        padding: 6px 20px 6px 12px
+        grid-template-areas: "time icon" "temp icon"
+        grid-template-rows: 55% 30%
+        grid-template-columns: 70%
+
+    .time
+        grid-area: time
+        width: fit-content
+        margin-bottom: 2px
+
+    .themeLight
+        .time
+            @include v.border($property: border-bottom, $color: #e0e0e0)
+        
+    .themeDark
+        .time
+            @include v.border($property: border-bottom, $color: #959595)
+
+    .icon
+        grid-area: icon
+        padding-top: 6px
+
+    .icon
+        img
+            width: 36px
+
+    .temp
+        grid-area: temp
+        

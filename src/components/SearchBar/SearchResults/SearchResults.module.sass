@@ -1,0 +1,28 @@
+@use "../../../assets/styles/variables" as v
+
+.result
+    padding: 3px 6px
+    margin-top: 10px
+    border-radius: 6px
+    cursor: pointer
+    transition: 0.15s ease-out
+
+    &:hover
+        scale: (1.02)
+
+.result:first-child
+    margin-top: 0px
+
+.themeLight
+    background: v.$light-tile-background
+    @include v.border($property: border, $color: v.$light-border)
+
+    &:hover
+        background: linear-gradient(45deg,rgba(254, 121, 176, 0.4), #9570b9 )
+
+.themeDark
+    background: v.$dark-tile-background
+    @include v.border($property: border, $color: v.$dark-border)
+
+    &:hover
+        background: linear-gradient(45deg,#000544, #00031c )

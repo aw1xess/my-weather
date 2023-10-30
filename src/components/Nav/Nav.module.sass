@@ -1,6 +1,27 @@
 .nav
     padding-top: 14px
     display: grid
-    grid-template-columns: 15% 20% 45% 20%
+    grid-template-columns: 20% 54% 21%
     justify-content: flex-start
+    height: 6vh
+    align-items: center
+
+@media screen and (max-width: 1200px)
+    .nav
+        grid-template-columns: 20% 54% 20%
+
+@media screen and (max-width: 900px)
+    .nav
+        padding-top: 10px
+        grid-template-columns: 32% 30% 30%
+        height: 5.2vh
+
+@media screen and (max-width: 640px)
+    .nav
+        grid-template-columns: 32% 30% 28%
+
+@media screen and (max-width: 560px)
+    .nav
+        grid-template-columns: 76% 10% 
+
 

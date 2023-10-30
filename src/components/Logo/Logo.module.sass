@@ -2,7 +2,7 @@ $primary-logo-color: #2762D4
 $secondary-logo-color: #fff
 
 .logo
-    font-size: 2vw
+    font-size: 1.3em
     color: $primary-logo-color
 
 .logo:hover > .logoPart
@@ -13,3 +13,7 @@ $secondary-logo-color: #fff
 
 .logoPart
     color: $secondary-logo-color
+
+@media screen and (max-width: 560px)
+    .logoDisabled
+        display: none

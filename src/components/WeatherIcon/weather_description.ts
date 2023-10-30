@@ -51,7 +51,14 @@ function defineIcon(weather: string, hours: number) {
 	const heavySnow = ["heavy snow", "heavy shower snow"];
 	const lightClouds = "few clouds";
 	const clouds = "scattered clouds";
-	const heavyClouds = ["broken clouds", "overcast clouds"];
+	const heavyClouds = [
+		"mist",
+		"fog",
+		"haze",
+		"smoke",
+		"broken clouds",
+		"overcast clouds",
+	];
 
 	if (thunderRain.includes(weather)) {
 		iconName = "thunder_rain";

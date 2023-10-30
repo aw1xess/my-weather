@@ -21,11 +21,30 @@ body
 .app
     height: 100vh
 
-
 .theme--light
     background: $light-bg-color
 
 .theme--dark
     background: $dark-bg-color    
-    
+
+@media screen and (max-width: 1240px)
+    .container
+        width: 94vw
+
+@media screen and (max-width: 1100px)
+    html
+        font-size: 20px
+
+@media screen and (max-width: 1024px)
+    html
+        font-size: 20px
+
+@media screen and (max-width: 900px)
+    html
+        font-size: 18px
+
+@media screen and (max-width: 639px)
+    .app
+        height: 100%
+        padding-bottom: 20px
     

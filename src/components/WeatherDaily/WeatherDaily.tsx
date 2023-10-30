@@ -4,7 +4,7 @@ import WeatherOnDay from "../WeatherOnDay/WeatherOnDay";
 import classnames from "classnames";
 import { useSelector } from "react-redux";
 import Swiper from "swiper";
-import { Navigation } from "swiper/modules";
+import { Navigation, Scrollbar } from "swiper/modules";
 
 import "swiper/scss";
 import "swiper/scss/navigation";
@@ -18,11 +18,28 @@ function WeatherDaily() {
 	useEffect(() => {
 		let mySwiper = new Swiper(".swiperDaily", {
 			modules: [Navigation],
-			slidesPerView: 7,
+			slidesPerView: 1,
 			spaceBetween: 20,
 			navigation: {
 				nextEl: ".swiper-button-next",
 				prevEl: ".swiper-button-prev",
+			},
+			breakpoints: {
+				375: {
+					slidesPerView: 2,
+				},
+				425: {
+					slidesPerView: 3,
+				},
+				640: {
+					slidesPerView: 4,
+				},
+				900: {
+					slidesPerView: 6,
+				},
+				1200: {
+					slidesPerView: 7,
+				},
 			},
 		});
 	}, []);
@@ -64,6 +81,7 @@ function WeatherDaily() {
 					{render()}
 				</div>
 			</div>
+
 			<div
 				className={classnames(
 					"swiper-button-prev",
